@@ -1,0 +1,142 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.content-section {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.image-section img {
+  /*width: 100%;*/
+  max-width: 500px;
+  height: auto;
+  margin: auto;
+  text-align: center;
+}
+.image-final img {
+  margin: auto;
+  display: block;
+  max-width: 500px;
+  text-align: center;
+}
+label, input[type="text"], input[type="email"], input[type="number"], input[type="tel"], select {
+  display: block;
+  width: calc(100% - 40px);
+  max-width: 500px;
+/*margin: 10px auto;*/
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.product-item input[type="radio"] {
+  margin-right: 15px;
+}
+
+.look-item input[type="radio"], .hora-item input[type="radio"] {
+  margin-right: 15px;
+}
+
+#valorTotalFinal, #pagamentoDetalhes {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #20b357;
+}
+
+#cupom {
+  width: calc(100% - 120px);
+  margin-left: 0px;
+  padding: 12px;
+}
+
+.botao-vermelho {
+  background-color: #ff0000;
+  color: white;
+}
+
+#mensagemCupom {
+  color: green;
+  font-size: 14px;
+}
+
+.cupom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-button {
+  text-align: center;
+}
+
+footer {
+  margin-top: 30px;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .product-item, .look-item, .hora-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-item input[type="radio"], .look-item input[type="radio"], .hora-item input[type="radio"] {
+    margin-bottom: 10px;
+  }
+}
