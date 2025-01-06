@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orçamento - Ensaio Fotográfico</title>
+
+    <!-- Incluindo o arquivo CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Incluindo a biblioteca jsPDF para salvar o orçamento -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Container Principal -->
+    <div class="container">
+      <!-- Aviso de Cookies -->
+      <div id="cookieNotice" class="cookie-notice">
+        Este site utiliza cookies para salvar suas preferências.
+      </div>
+
+      <!-- Primeira Imagem -->
+      <div class="image-section">
+        <img
+          src="img/retratos.png"
+          alt="Imagem do Ensaio"
+        />
+      </div>
+
+          <div class="container">
+            <header>
+              <h1>Orçamento Personalizado - Ensaio Fotográfico</h1>
+            </header>
+      
+            <!-- 1. Dados do Cliente -->
+            <div class="content-section">
+              <h3>1) Dados do Cliente</h3>
+              <form id="dadosClienteForm">
+                <label for="nomeCliente">Qual seu nome?</label>
+                <input type="text" id="nomeCliente" placeholder="Digite seu nome" required />
+      
+                <label for="email">Qual seu email?</label>
+                <input type="email" id="email" placeholder="Digite seu email" required />
+      
+                <label for="idade">Quantos anos você tem?</label>
+                <input type="number" id="idade" placeholder="Digite sua idade" required />
+      
+                <label for="whatsapp">Digite seu WhatsApp:</label>
+                <input type="tel" id="whatsapp" placeholder="Digite seu número de WhatsApp" required />
+              </form>
+            </div>
+      
+            <!-- 2. Escolha da Cidade -->
+            <div class="content-section">
+              <h3>2) Em qual cidade gostaria de fazer seu ensaio? (deslocamento não incluso)</h3>
+              <ul id="cidadesDeslocamento">
+                <li>
+                  <input type="radio" name="cidadeEnsaio" value="0" onchange="calcularDeslocamento()" />
+                  <span>Guimarânia/MG (sem acréscimo de deslocamento)</span>
+                </li>
+                <li>
+                  <input type="radio" name="cidadeEnsaio" value="100" onchange="calcularDeslocamento()" />
+                  <span>Patos de Minas/MG (deslocamento - R$100)</span>
+                </li>
+                
+                <li>
+                  <input type="radio" name="cidadeEnsaio" value="70" onchange="calcularDeslocamento()" />
+                  <span>Patrocínio/MG (deslocamento - R$70)</span>
+                </li>
+                <li>
+                  <input type="radio" name="cidadeEnsaio" value="100" onchange="calcularDeslocamento()" />
+                  <span>Serra do Salitre/MG (deslocamento - R$100)</span>
+                </li>
+                <li>
+                  <input type="radio" name="cidadeEnsaio" value="200" onchange="calcularDeslocamento()" />
+                  <span>Uberlândia/MG (deslocamento - R$250)</span>
+                </li>
+                
+              </ul>
+            </div>
+      
+            <!-- 3. Quando fazer o ensaio -->
+            <div class="content-section">
+              <h3>3) Quando você gostaria de fazer o ensaio?</h3>
+              <ul id="diaSemana">
+                <li>
+                  <input type="radio" name="diaEnsaio" value="1" onchange="calcularMultiplicador()" />
+                  <span>Terça, Quarta ou Quinta-feira</span>
+                </li>
+                <li>
+                  <input type="radio" name="diaEnsaio" value="1.5" onchange="calcularMultiplicador()" />
+                  <span>Domingo ou Feriado</span>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- 4. Tipo de Ensaio -->
+            <div class="content-section">
+              <h3>4) Que tipo de ensaio você gostaria de fazer?</h3>
+              <ul id="tipoEnsaio">
+                <li>
+                  <input type="radio" name="tipoEnsaio" value="individualCasual" />
+                  <span>Ensaio Individual Casual</span>
+                </li>
+                <li>
+                  <input type="radio" name="tipoEnsaio" value="individualSensual" />
+                  <span>Ensaio Individual Sensual</span>
+                </li>
+                <li>
+                  <input type="radio" name="tipoEnsaio" value="familiaPaiMaeIrmaos" />
+                  <span>Ensaio Família (pai, mãe e irmãos)</span>
+                </li>
+                <li>
+                  <input type="radio" name="tipoEnsaio" value="gestante" />
+                  <span>Ensaio Gestante</span>
+                </li>
+                <li>
+                  <input type="radio" name="tipoEnsaio" value="infantil" />
+                  <span>Ensaio Infantil</span>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- 5. Pacote de Serviços -->
+            <div class="content-section pacotes-container">
+              <h3>5) Qual pacote você gostaria de agendar?</h3>
+              <ul id="pacotes">
+                <li>
+                  <input type="radio" name="pacote" value="300" onchange="calcularValorTotal()" />
+                  <span>Pacote de 1 hora, 10 fotos digitais - R$300</b> </span>
+                </li>
+                <li>
+                  <input type="radio" name="pacote" value="350" onchange="calcularValorTotal()" />
+                  <span>Pacote de 1 hora, 20 fotos digitais - R$350</b></span>
+                </li>
+                <li>
+                  <input type="radio" name="pacote" value="450" onchange="calcularValorTotal()" />
+                  <span>Pacote de 1 hora, 30 fotos digitais - R$450</b></span>
+                </li>
+                <li>
+                  <input type="radio" name="pacote" value="550" onchange="calcularValorTotal()" />
+                  <span>Pacote de 1 hora, 40 fotos digitais - R$550</b></span>
+                </li>
+                <li>
+                  <input type="radio" name="pacote" value="650" onchange="calcularValorTotal()" />
+                  <span>Pacote de 1 hora, 50 fotos digitais - R$650</b></span>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- 6. Look Extra -->
+            <div class="content-section">
+              <h3>6) Gostaria de acrescentar look para fotografar?</h3>
+              <ul id="looks">
+                <li>
+                  <input type="radio" name="look" value="100" onchange="calcularValorTotal()" />
+                  <span>1 look extra - R$100</span>
+                </li>
+                <li>
+                  <input type="radio" name="look" value="200" onchange="calcularValorTotal()" />
+                  <span>2 looks extras - R$200</span>
+                </li>
+                <li>
+                  <input type="radio" name="look" value="300" onchange="calcularValorTotal()" />
+                  <span>3 looks extras - R$300</span>
+                </li>
+                <li>
+                  <input type="radio" name="look" value="0" onchange="calcularValorTotal()" />
+                  <span> Não quero look extra</span>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- 7. Hora Extra -->
+            <div class="content-section">
+              <h3>7) Gostaria de acrescentar hora extra de ensaio?</h3>
+              <ul id="horaExtra">
+                <li>
+                  <input type="radio" name="hora" value="100" onchange="calcularValorTotal()" />
+                  <span>1 hora extra - R$100</span>
+                </li>
+                <li>
+                  <input type="radio" name="hora" value="200" onchange="calcularValorTotal()" />
+                  <span>2 horas extras - R$200</span>
+                </li>
+                <li>
+                  <input type="radio" name="hora" value="0" onchange="calcularValorTotal()" />
+                  <span> Não quero hora extra</span>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- 8. Horário do Ensaio -->
+            <div class="content-section">
+              <h3>8) Qual horário você gostaria de fotografar?</h3>
+              <ul id="horarioEnsaio">
+                
+                <li>
+                  <input type="radio" name="horarioEnsaio" value="16:00-17:00" />
+                  <span>15:00-16:00</span>
+                </li>
+                <li>
+                  <input type="radio" name="horarioEnsaio" value="16:00-17:00" />
+                  <span>16:00-17:00</span>
+                </li>
+                <li>
+                  <input type="radio" name="horarioEnsaio" value="17:00-18:00" />
+                  <span>17:00-18:00</span>
+                </li>
+              </ul>
+            </div>
+      
+      <!-- Exibição do valor total -->
+      <div id="valorTotalFinal">Valor total do pacote: R$ 0</div>
+
+      <!-- Detalhes do pagamento (50% agora, 50% no dia) -->
+      <div id="pagamentoDetalhes"></div>
+
+      <!-- Botão de WhatsApp -->
+      <div style="text-align: center;" class="content-section whatsapp-button">
+        <button onclick="enviarWhatsApp()">CLIQUE AQUI PARA AGENDAR SEU ENSAIO PELO WHATSAPP</button>
+      </div>
+
+      <!-- Segunda Imagem -->
+      <div class="image-final">
+        <img
+          src="img/da2.png"
+          alt="Imagem do Ensaio"
+        />
+      </div>
+
+      <!-- Informações Extras -->
+     <div style="text-align:center">
+        <h1>⚠️ A T E N Ç Ã O ⚠️</h1>
+        <p>Algumas informações sobre os ensaios:</p>
+        <ul>
+          <li>Os looks são de responsabilidade da cliente;</li>
+          <li>Taxas de locais pagos para ensaios são de responsabilidade da cliente;</li>
+          <li>Ensaios tem duração de 1, 2 ou 3 horas (Mas você pode adicionar hora extra);</li>
+          <li>Fechando ensaio de terça, quarta e quinta-feira com valor promocional;</li>
+          <li>Resido em Guimarânia-MG, então para ensaios fora da minha cidade tem adicional de deslocamento;</li>
+          <li>Traga 1 amiga para fotografar no mesmo dia do seu e ganhe um cupom de deslocamento gratis;</li>
+          <li>Tempo de entrega: até 10 dias para escolha e 10 dias para entrega final;</li>
+          <li>Entrega somente digital, para impressões, quadros e albuns solicitar pelo whatsapp;</li>
+          <li>Escolha suas fotos no dia do ensaio com entrega de 5 fotos durante o ensaio e o restante do material final em até 24 horas após o ensaio com acréscimo de R$500 ao valor total;</li>
+          <li>Editorial e fotos para loja somente pacote superpremium com adicional de look e hora extra;</li>
+          <li>Você pode adquirir fotos extras após o ensaio por:</li>
+          <ul>
+            <li>1 foto extra - R$30</li>
+            <li>10 fotos extras - R$250</li>
+            <li>20 fotos extras - R$350</li>
+            <li>30 fotos extras - R$450</li>
+            <li>40 fotos extras - R$550</li>
+            <li>50 fotos extras - R$650</li>
+            <li>valor somente para fotos extras</li>
+          </ul>
+        </ul>
+      </div>
+
+      <!-- Rodapé -->
+      <footer>
+        <p style="text-align: center;">DANIEL AZEVEDO FOTOGRAFIA © 2025</p>
+      </footer>
+    </div>
+
+    <!-- Script para cálculos e funcionalidades -->
+    <script src="script.js"></script>
+  </body>
+</html>

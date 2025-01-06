@@ -1,0 +1,177 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: auto;
+  background-color: #fff;
+}
+.cookie-notice {
+  background-color: #200202;
+  border: 1px solid #ddd;
+  padding: 30px;
+  margin: auto;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeOut 5s 3s forwards;
+}
+  /* Animação para sumir o aviso */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+h1, h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.content-section {
+  margin-bottom: 20px;
+  text-align: left;
+  align-items: auto;
+}
+
+.image-section img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  margin: auto;
+  text-align: center;
+}
+.image-final img {
+  margin: auto;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 450px;
+  text-align: center;
+}
+label, input[type="text"], input[type="email"], input[type="number"], input[type="tel"], select {
+  display: block;
+  width: calc(100% - 40px);
+  max-width: 450px;
+/*margin: 10px auto;*/
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.product-item input[type="radio"] {
+  margin-right: 15px;
+}
+
+.look-item input[type="radio"], .hora-item input[type="radio"] {
+  margin-right: 15px;
+}
+
+#valorTotalFinal, #pagamentoDetalhes {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #20b357;
+}
+
+#cupom {
+  width: calc(100% - 120px);
+  margin-left: 0px;
+  padding: 12px;
+}
+
+.botao-vermelho {
+  background-color: #ff0000;
+  color: white;
+}
+
+#mensagemCupom {
+  color: green;
+  font-size: 14px;
+}
+
+.cupom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-button {
+  text-align: center;
+}
+
+footer {
+  margin-top: 30px;
+  color: #555;
+  font-size: 14px;
+}
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  .cookie-notice {
+    font-size: 12px;
+    padding: 10px;
+    bottom: 10px;
+  }
+  .product-item, .look-item, .hora-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-item input[type="radio"], .look-item input[type="radio"], .hora-item input[type="radio"] {
+    margin-bottom: 10px;
+  }
+}
